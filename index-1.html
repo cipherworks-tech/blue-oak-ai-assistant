@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Oak Automation | AI-Powered Business Automation for Small Businesses</title>
+    <meta name="description" content="Transform your small business with AI-powered automation. Reduce lead response time from 47 hours to 5 minutes. Automate 15-20 hours of weekly work.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #1e40af;
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --accent: #14b8a6;
+            --accent-light: #5eead4;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --light-gray: #f9fafb;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0891b2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            display: block;
+            color: var(--accent-light);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .section-header .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .problem-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .stat-highlight {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        
+        /* Solution Section */
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-box:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1);
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray);
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Before/After Section */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .before, .after {
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+        
+        .before {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 2px solid #f87171;
+        }
+        
+        .after {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 2px solid #34d399;
+        }
+        
+        .comparison h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .before h3 {
+            color: #991b1b;
+        }
+        
+        .after h3 {
+            color: #065f46;
+        }
+        
+        .comparison ul {
+            list-style: none;
+        }
+        
+        .comparison li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .before li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .after li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #059669;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-period {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            color: var(--dark);
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .pricing-cta {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+        
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        .pricing-card.community .pricing-cta {
+            background: linear-gradient(135deg, #059669, #14b8a6);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .founder-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .founder-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-bio {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .credentials {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--light-gray);
+        }
+        
+        .credential-item {
+            padding: 0.5rem 0;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-value {
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .contact-value a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-value a:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.25rem;
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.875rem;
+            }
+            
+            .pricing-grid,
+            .solution-features,
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">BLUE OAK</div>
+            <ul class="nav-links">
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Stop Losing Customers to<br>Slow Response Times</h1>
+            <p class="subtitle">AI-powered automation that transforms how your business handles leads, content, and customer communication—automatically.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">&lt;5min</span>
+                    <span class="stat-label">Lead Response Time</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15-20hrs</span>
+                    <span class="stat-label">Saved Weekly</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Automation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>The <span class="highlight">Hidden Crisis</span> Facing Small Businesses</h2>
+                <p>You're not losing customers because of poor service. You're losing them because you can't respond fast enough.</p>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3>The Response Time Gap</h3>
+                    <p>The average small business takes <span class="stat-highlight">47 hours</span> to respond to a lead inquiry. In a world where <span class="stat-highlight">78% of customers</span> buy from the first business to respond, this delay is costing you thousands in lost revenue.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">💼</div>
+                    <h3>The Administrative Burden</h3>
+                    <p>You're drowning in manual tasks: responding to messages, scheduling appointments, following up with leads, posting on social media. These tasks consume <span class="stat-highlight">15-20 hours per week</span>—time you could spend actually running your business.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">💰</div>
+                    <h3>The Solution Cost Barrier</h3>
+                    <p>DIY platforms require <span class="stat-highlight">40+ hours</span> of setup time you don't have. Full-service agencies charge <span class="stat-highlight">$2,500-7,500/month</span> you can't afford. You're stuck in the middle with no good options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>The <span class="highlight">Blue Oak Platform</span></h2>
+                <p>A complete, integrated automation system that works while you work.</p>
+            </div>
+            
+            <div class="solution-features">
+                <div class="feature-box">
+                    <span class="feature-badge">Content Intelligence Engine</span>
+                    <h3>Never Miss a Social Post Again</h3>
+                    <p>Your AI-powered content team that creates, schedules, and posts engaging content across all your platforms—automatically.</p>
+                    <ul class="feature-list">
+                        <li>AI analyzes your business and creates tailored content</li>
+                        <li>Auto-generates posts, captions, and hashtags</li>
+                        <li>Schedules and publishes to Facebook, Instagram, WhatsApp</li>
+                        <li>Monitors engagement and identifies hot leads</li>
+                        <li>Hands off qualified prospects to your Lead Engine</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box">
+                    <span class="feature-badge">Lead Intelligence Engine</span>
+                    <h3>Capture Every Lead, Every Time</h3>
+                    <p>Your AI-powered sales assistant that ensures no lead ever falls through the cracks—responding in minutes, not days.</p>
+                    <ul class="feature-list">
+                        <li>Captures leads from all channels into one CRM</li>
+                        <li>AI categorizes leads: hot/warm/cold, priority level</li>
+                        <li>Automated response sent within 5 minutes</li>
+                        <li>Smart follow-up sequences based on lead type</li>
+                        <li>Real-time alerts and reporting dashboard</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section-header mt-4">
+                <h2>Before & After <span class="highlight">Blue Oak</span></h2>
+            </div>
+            
+            <div class="comparison">
+                <div class="before">
+                    <h3>❌ Before Blue Oak</h3>
+                    <ul>
+                        <li>47-hour average lead response time</li>
+                        <li>15-20 hours weekly on admin tasks</li>
+                        <li>Inconsistent social media presence</li>
+                        <li>Lost leads due to slow follow-up</li>
+                        <li>Manual scheduling and reminders</li>
+                        <li>No lead tracking or analytics</li>
+                        <li>Weekend and evening inquiries ignored</li>
+                    </ul>
+                </div>
+                
+                <div class="after">
+                    <h3>✓ After Blue Oak</h3>
+                    <ul>
+                        <li>Under 5-minute lead response time</li>
+                        <li>15-20 hours reclaimed for growth activities</li>
+                        <li>Consistent, professional social presence</li>
+                        <li>Every lead captured and nurtured</li>
+                        <li>Automated scheduling and follow-ups</li>
+                        <li>Complete lead tracking and ROI analytics</li>
+                        <li>24/7 automated lead capture and response</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparent <span class="highlight">Pricing</span></h2>
+                <p>Choose the plan that fits your business. All plans include both engines working together.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card community">
+                    <div class="pricing-badge">Community Impact</div>
+                    <h3>Community</h3>
+                    <p class="pricing-description">Grant-subsidized pricing for qualifying microbusinesses</p>
+                    <div class="price">$247-597<span class="price-period">/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Content Intelligence Engine</li>
+                        <li>Lead Intelligence Engine</li>
+                        <li>Up to 500 leads/month</li>
+                        <li>3 social platforms</li>
+                        <li>Email + chat support</li>
+                        <li>Basic analytics</li>
+                    </ul>
+                    <button class="pricing-cta">Apply for Community Tier</button>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--gray); text-align: center;">Qualifying criteria apply</p>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Starter</h3>
+                    <p class="pricing-description">Perfect for growing businesses ready to scale</p>
+                    <div class="price">$697<span class="price-period">/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Community, plus:</li>
+                        <li>Up to 1,000 leads/month</li>
+                        <li>5 social platforms</li>
+                        <li>Advanced lead scoring</li>
+                        <li>Custom workflows</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                    <button class="pricing-cta">Get Started</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Growth</h3>
+                    <p class="pricing-description">For established businesses with higher volume</p>
+                    <div class="price">$997<span class="price-period">/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Starter, plus:</li>
+                        <li>Up to 2,500 leads/month</li>
+                        <li>Unlimited platforms</li>
+                        <li>Multi-location support</li>
+                        <li>Custom integrations</li>
+                        <li>Dedicated account manager</li>
+                        <li>White-label reporting</li>
+                    </ul>
+                    <button class="pricing-cta">Contact Sales</button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p style="color: var(--gray); font-size: 1.1rem;">🎉 <strong>Founder's Discount:</strong> First 10 clients get 20% off for 3 months</p>
+                <p style="color: var(--gray); margin-top: 0.5rem;">💰 <strong>Referral Rewards:</strong> Earn $100/month credit for 3 months per successful referral</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet the <span class="highlight">Founder</span></h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="founder-card">
+                    <div class="founder-name">Mark Jobson</div>
+                    <div class="founder-title">Founder & CEO</div>
+                    <div class="credentials">
+                        <div class="credential-item">📍 Southfield, Michigan</div>
+                        <div class="credential-item">🎓 Eastern Michigan University</div>
+                        <div class="credential-item">💼 15+ Years Technical Experience</div>
+                        <div class="credential-item">🔧 UNIX Systems & Network Engineering</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="founder-bio" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        After 15+ years in UNIX system administration and Cisco network engineering, I witnessed firsthand how the AI automation revolution was completely bypassing the businesses that needed it most. The family auto shop. The neighborhood salon. The solo dentist.
+                    </p>
+                    <p class="founder-bio" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        These businesses weren't losing customers because of poor service—they were losing them because they couldn't respond fast enough. Meanwhile, DIY platforms required 40+ hours of setup time they didn't have, and agencies charged $2,500-7,500/month they couldn't afford.
+                    </p>
+                    <p class="founder-bio" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <strong>Blue Oak exists to democratize access to automation.</strong> As a Southfield native who witnessed Detroit's struggles and resurgence, I'm committed to ensuring the city's economic revival extends beyond downtown to the neighborhood entrepreneurs who form the backbone of our communities.
+                    </p>
+                    <p class="founder-bio" style="font-size: 1.1rem; line-height: 1.8;">
+                        We're proving that AI automation can serve everyone, not just those who can already afford it.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="section-header">
+                    <h2>Ready to <span class="highlight">Transform</span> Your Business?</h2>
+                    <p>Let's talk about how Blue Oak can help you reclaim 15-20 hours per week and never miss another lead.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:blueoak@blueoakautomation.com">blueoak@blueoakautomation.com</a></div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Southfield, Michigan</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Serving</div>
+                        <div class="contact-value">Detroit Metro Area & Beyond</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <a href="mailto:blueoak@blueoakautomation.com" class="cta-button" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Schedule a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BLUE OAK AUTOMATION</div>
+            <p class="footer-text">
+                AI-powered business automation that makes enterprise-grade technology accessible to every small business.
+            </p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blue Oak Automation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
